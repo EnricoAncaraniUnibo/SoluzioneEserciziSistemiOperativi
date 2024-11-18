@@ -1,0 +1,50 @@
+10. Lanciare il comando history e scegliere uno dei comandi elencati da history.
+Utilizzare le funzioni di history per rilanciare quel comando.
+history
+!72 (PUò ESSERE UN NUMERO QUALUNQUE STA A INDICARE IL COMANDO DA RILANCIARE)
+
+11. Usare il comando set per disabilitare la memorizzazione di history. Poi lanciare un
+comando qualsiasi e poi lanciare history e verificare che quel comando non è stato
+memorizzato. Infine, usare il comando set per riabilitare la memorizzazione di
+history.
+set +o history
+echo ciao
+history
+set -o history
+
+12. Usare il comando set per abilitare la creazione di variabili d'ambiente e verificare se
+funziona (inventarsi un modo per testare se le variabili sono create come var
+d'ambiente oppure no)
+A=ciao
+env | grep a
+set -a
+B=ciao
+env | grep B
+set +a
+C=ciao
+env | grep C
+
+13. Inserire un comando echo, con un messaggio diverso, nei file .profile e .bashrc
+Poi lanciare una shell interattiva NON di login e verificare quale dei due file viene
+eseguito. Poi lanciare una shell NON interattiva e verificare che non viene eseguito
+nessuno dei due file. Poi riportare i file .profile e .bashrc come erano all'inizio.
+echo 'echo ciao1' >> .bashrc
+echo 'echo ciao2' >> .profile
+bash
+bash -c ./.profile
+bash -c ./.bashrc
+
+14. Usare i metacaratteri per visualizzare con ls le proprietà dei file contenuti nella
+directory /usr/lib/ che hanno un nome che contiene la stringa plu
+ls -la usr/lib *plu*
+
+15. Usare il comando man per studiare le opzioni del comando ls.
+man ls
+
+16. Usare ls e le sue opzioni per visualizzare tutti i file nella directory /usr/include/ e
+nelle sue sottodirectory.
+ls -Rla usr/include
+
+17. Usare ls e le sue opzioni per visualizzare le informazioni di una directory
+/usr/include/ senza visualizzare tutti i file nella directory
+ls -ld
