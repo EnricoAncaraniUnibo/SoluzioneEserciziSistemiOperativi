@@ -1,0 +1,62 @@
+Visualizzare a video il contenuto delle variabili USER HOME DISPLAY 
+echo ${USER} ${HOME} ${DISPLAY}
+
+Verificare se le variabili USER HOME DISPLAY sono di ambiente o locali.
+env | grep USER
+env | grep HOME
+env | grep DISPLAY
+
+Scrivere un comando che crea una nuova variabile di nome PIPPO la quale contiene
+la concatenazione dei contenuti delle variabili USER HOME DISPLAY
+PIPPO=${USER}${HOME}${DISPLAY}
+
+Scrivere uno script bash, di nome crea_var.sh, che crea una nuova variabile di
+nome PIPPO la quale contiene la concatenazione dei contenuti delle variabili USER
+HOME DISPLAY.
+touch crea_var.sh
+echo 'PIPPO=${USER}${HOME}${DISPLAY}' >> crea_var.sh
+chmod u+x crea_var.sh
+bash -c ./crea_var.sh
+
+Dall’interno di una shell bash, eseguire lo script crea_var.sh in un modo tale che la
+variabile PIPPO sia presente (col nuovo contenuto) dentro la bash chiamante dopo
+la fine dell’esecuzione dello script crea_var.sh
+source ./crea_var.sh
+
+Spostarsi in radice del filesystem e poi stampare a video la propria home directory.
+cd /
+echo ~
+
+Creare nella propria home directory una sottodirectory A1 che contiene una
+sottodirectory B2 che contiene una sottodirectory C3 che contiene tre file 1.txt 2.txt
+e 3.txt. Poi usate il comando move (mv) per spostare i 3 file nella directory B2.
+Poi usate il comando copy (cp) per mettere una copia dei tre file nella directory A1.
+cd 
+mkdir A1
+cd A1
+mkdir B2
+cd B2
+mkdir C3
+cd C3
+touch 1.txt
+touch 2.txt
+touch 3.txt
+mv 1.txt ../
+mv 2.txt ../
+mv 3.txt ../
+cd ..
+cp 1.txt ../
+cp 2.txt ../
+cp 3.txt ../
+
+Provare a vedere il contenuto di tutti i file nascosti presenti nella propria home
+directory, usando il comando cat. Notare il problema dato dal fatto che .* viene
+espanso anche con ..
+cd /
+cd
+cat .*
+
+Usare la funzionalità di completamento (tasto TAB) per scrivere velocemente
+l’argomento del comando ls /usr/include/linux/netfilter/nf_nat.h
+cd /
+USO TAB per compilare ls /usr/include/linux/netfilter/nf_nat.h
