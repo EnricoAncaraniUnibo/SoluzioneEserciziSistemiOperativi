@@ -25,6 +25,10 @@ stampaargs2.sh. Stavolta però il file lancia2.sh non passa gli argomenti a
 stampaargs2.sh nella riga di comandi, bensì in una variabile d'ambiente NOMIFILES
 appositamente creata per lo script stampaargs2.sh.
 Verificare SE E' POSSIBILE identificare bene i confini dei nomi di files (risposta NO).
-
+echo 'NOMIFILES="$@"' >> lancia2.sh
+echo 'export NOMIFILES' >> lancia2.sh
+echo './stampaargs2.sh' >> lancia2.sh
+echo 'for A in ${NOMIFILES}; do echo ${A}; done' >> stampaargs2.sh
 
 25. Usare il comando rm per eliminare i 3 files che hanno la stringa spazio nel nome
+rm *spazio*
