@@ -10,7 +10,6 @@ comprese le sottodirectory delle sottodirectory e così via ricorsivamente.
  Eliminare la directory "include" nella vostra directory BUTTAMI (eliminare anche
 tutti i file e sottodirectory di include, ATTENTI A NON ELIMINARE l'ORIGINALE
 /usr/include
-touch script.sh
 mkdir BUTTAMI
 touch ./BUTTAMI/"*"
 touch ./BUTTAMI/"**"
@@ -28,3 +27,13 @@ NOTARE CHE IN QUESTO CASO NON SI RIESCE AD ESEGUIRE UN SOLO COMANDO
 touch per ciascuno dei file esistenti. Il problema dipende dalla presenza degli
 asterischi nel nome. MORALE: QUANDO POSSIBILE USARE I
 METACARATTERIPERGENERAREINOMIDIFILES.
+mkdir BUTTAMI
+touch ./BUTTAMI/"*"
+touch ./BUTTAMI/"**"
+touch ./BUTTAMI/"***"
+touch ./BUTTAMI/";;"
+for VAR in `ls BUTTAMI/*; do touch "${VAR}.txt"; done
+cp -R ../usr/include ./BUTTAMI
+ls -R ./BUTTAMI
+find ./BUTTAMI -type d
+rm -r ./BUTTAMI/include
