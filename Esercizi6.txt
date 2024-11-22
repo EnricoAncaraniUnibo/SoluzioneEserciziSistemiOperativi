@@ -23,7 +23,13 @@ ricorsivamente per calcolare il fattoriale del numero passato come argomento. A
 differenza del caso precedente, il risultato di ogni invocazione deve essere scritto in
 una variabile condivisa (in entrambe le direzioni) tra chiamante e chiamato di nome
 RIS.
-
+touch chiama_fattoriale.sh
+echo 'RIS=1' >> chiama_fattoriale.sh
+echo 'source fattoriale.sh 5' >> chiama_fattoriale.sh
+echo 'echo ${RIS}' >> chiama_fattoriale.sh
+touch fattoriale.sh
+echo 'NUM=$1' >> fattoriale.sh
+echo 'if ((${NUM}>1)); then ((RIS=${RIS}*${NUM})); ((NUM=${NUM}-1)); source fattoriale.sh ${NUM}; fi' >> fattoriale.sh
 
 6. Scrivere uno script script1.sh che prende a riga di comando un numero variabile di
 argomenti. Lo script visualizza sullo standard output tutti gli argomenti e poi invoca

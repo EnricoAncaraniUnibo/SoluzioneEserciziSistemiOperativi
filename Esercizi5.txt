@@ -32,7 +32,7 @@ touch ./BUTTAMI/"*"
 touch ./BUTTAMI/"**"
 touch ./BUTTAMI/"***"
 touch ./BUTTAMI/";;"
-for VAR in `ls BUTTAMI/*; do touch "${VAR}.txt"; done
+for VAR in `ls BUTTAMI/*`; do touch "${VAR}.txt"; done
 cp -R ../usr/include ./BUTTAMI
 ls -R ./BUTTAMI
 find ./BUTTAMI -type d
