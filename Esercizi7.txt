@@ -1,0 +1,38 @@
+7. Scoprire quale e’ il flag di echo che permette di stampare a video caratteri speciali
+consentendo di passarli al comando echo stesso mediante le sequenze di escape
+come in C, quali \n \b \t (abilita interpretazione di backslash escapes).
+man echo
+echo -e "\tciao\n"
+
+8. Scoprire quale e’ il flag di echo che permette di stampare a video la stringa passata
+come argomento SENZA poi andare a capo.
+man echo
+echo -n ciao
+
+9. Visualizzare l’elenco dei file della directory corrente ad esclusione dei file il cui nome
+comincia per .
+ls -I ".*"
+
+10. Scrivere uno script che usa anche il comando for per visualizzare, per ciascun file
+della directory corrente che non inizia per . , una coppia di righe in cui:
+la prima riga contiene la stringa “file is ” seguita dal nome del file
+la seconda riga fa il listing delle informazioni sul file. Se il file è una directory, il
+listing deve contenere solo il nome della directory, non quello dei suoi files.
+touch script.sh
+echo 'for VAR in `ls -I ".*"`; do echo "file is ${VAR}"; CIAO=`ls -alhd ${VAR}`; echo ${CIAO}; done' >> script.sh
+
+11. Ripetere la prova precedente, stavolta tutto il comando for do done su una unica
+riga, aggiungendo le necessarie modifiche per ottenere lo stesso risultato di prima.
+non cambia niente, ho risposto a questo es in quello prima.
+
+12. Modificare lo script per verificare se il comando ls è andato a buon fine e, in caso
+contrario, stampare a video un avviso "ls produce errore"
+for VAR in `ls -I ".*"`; do echo "file is ${VAR}"; CIAO=`ls -alhd ${VAR}`; if (($?!=0)); then echo "ls produce errore";fi; echo ${CIAO}; done
+
+13. Creare un file il cui nome contiene uno spazio bianco, ad esempio alfa beta.txt
+touch "alfa beta".txt
+
+14. Ora ripetere la prova al punto 9 e verificare se funziona. DOVREBBE ACCADERE
+UN ERRORE LEGATO ALLA PRESENZA DELLO SPAZIO BIANCO NEL NOME.
+NON CERCATE DI CORREGGERLO. OCCORREREBBE MODIFICARE IFS
+si Dà errore
