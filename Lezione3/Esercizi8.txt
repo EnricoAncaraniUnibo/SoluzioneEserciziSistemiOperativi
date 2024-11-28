@@ -13,13 +13,15 @@ echo ${STR}
 
 17. Nello script precedente provare a passare un ; come argomento e correggere
 eventuali errori.
-
+source argomenti.sh "ciao" ";" "anka"
 
 18. Scrivere uno script bash sommaquadrati.sh che prende in input un numero
 qualsiasi di argomenti interi positivi e stampa a video il numero intero dato dalla
 somma dei quadrati dei singoli argomenti diminuito della somma degli indici degli
 argomenti.
-
+RIS=0
+for (( I=1; ${I}<=$#; I=${I}+1 )); do ((RIS=(${RIS}+(${!I}*${!I}))-${I})); done
+echo ${RIS}
 
 19. scrivere quattro script bash main.sh definisci.sh usa.sh ed elimina.sh che
 svolgono queste operazioni: definisci.sh crea la variabile d'ambiente VAR e ne
@@ -30,4 +32,18 @@ modo da creare nel proprio ambiente di esecuzione la stringa VAR, di stamparne a
 video il contenuto e di eliminare la variabile dal proprio ambiente di esecuzione.
 Infine main.sh chiama ancora opportunamente lo script usa.sh per verificare se la
 variabile VAR è stata effettivamente eliminata.
+main.sh
+source ./definisci.sh
+./usa.sh
+source ./elimina.sh
 
+definisci.sh
+set -a
+VAR="INIZIO"
+set +a
+
+usa.sh
+echo ${VAR}
+
+elimina.sh
+unset VAR
