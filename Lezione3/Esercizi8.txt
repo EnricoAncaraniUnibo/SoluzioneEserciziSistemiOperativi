@@ -1,0 +1,29 @@
+15. Scrivere uno script bash triplette.sh che stampa a video tutte le triplette di forma
+(X;Y;Z) dove X Y e Z sono i nomi dei file, non nascosti, nella directory corrente.
+
+
+16. Scrivere uno script bash argomenti.sh che prende in input un numero qualsiasi di
+argomenti e stampa a video una stringa formata dalla concatenazione degli
+argomenti di indice pari seguiti dagli argomenti di indice dispari.
+
+
+17. Nello script precedente provare a passare un ; come argomento e correggere
+eventuali errori.
+
+
+18. Scrivere uno script bash sommaquadrati.sh che prende in input un numero
+qualsiasi di argomenti interi positivi e stampa a video il numero intero dato dalla
+somma dei quadrati dei singoli argomenti diminuito della somma degli indici degli
+argomenti.
+
+
+19. scrivere quattro script bash main.sh definisci.sh usa.sh ed elimina.sh che
+svolgono queste operazioni: definisci.sh crea la variabile d'ambiente VAR e ne
+setta il contenuto a "INIZIO", usa.sh stampa a video il contenuto della variabile
+VAR, elimina.sh elimina dall'ambiente di esecuzione la variabile VAR, mentre
+main.sh chiama opportunamente i tre script definisci.sh usa.sh ed elimina.sh in
+modo da creare nel proprio ambiente di esecuzione la stringa VAR, di stamparne a
+video il contenuto e di eliminare la variabile dal proprio ambiente di esecuzione.
+Infine main.sh chiama ancora opportunamente lo script usa.sh per verificare se la
+variabile VAR è stata effettivamente eliminata.
+
