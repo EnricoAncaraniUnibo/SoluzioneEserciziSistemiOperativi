@@ -1,11 +1,15 @@
 15. Scrivere uno script bash triplette.sh che stampa a video tutte le triplette di forma
 (X;Y;Z) dove X Y e Z sono i nomi dei file, non nascosti, nella directory corrente.
-
+NOMI=`ls`
+for VAR1 in ${NOMI}; do for VAR2 in ${NOMI}; do for VAR3 in ${NOMI}; do echo "(${VAR1};${VAR2};${VAR3})"; done ; done ; done
 
 16. Scrivere uno script bash argomenti.sh che prende in input un numero qualsiasi di
 argomenti e stampa a video una stringa formata dalla concatenazione degli
 argomenti di indice pari seguiti dagli argomenti di indice dispari.
-
+STR=""
+for ((I=2; $I<=$#; I=$I+2)); do STR=${STR}${!I}; done
+for ((I=1; $I<=$#; I=$I+2)); do STR=${STR}${!I}; done
+echo ${STR}
 
 17. Nello script precedente provare a passare un ; come argomento e correggere
 eventuali errori.
