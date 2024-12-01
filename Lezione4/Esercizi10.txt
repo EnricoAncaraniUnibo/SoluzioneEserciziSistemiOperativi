@@ -1,0 +1,35 @@
+20. Stampare a video le sole righe del file /usr/include/stdio.h che contengono almeno
+un asterisco *
+Suggerimento1: utilizzare il comando grep ma senza usare l'operatore |
+Suggerimento2: Guardare il man di grep per capire come usare grep in modo
+opportuno.
+grep '*' /usr/include/stdio.h
+
+21. Stampare a video le sole righe del file /usr/include/stdio.h che NON contengono
+alcun asterisco *
+Suggerimento2: Guardare il man di grep per capire come usare grep in modo
+opportuno.
+grep -v '*' /usr/include/stdio.h
+
+22. Scrivere uno script bash leggere.sh che legge le righe del file /usr/include/stdio.h
+e stampa a video la sola terza parola di ciascuna riga, o niente se la terza parola
+non esiste
+exec {VAR}< /usr/include/stdio.h
+while read -u ${VAR} A B C D; do echo ${C}; done
+exec {VAR}>&-
+
+23. Scrivere uno script bash leggerecaratteri.sh che legge uno per uno i caratteri del
+file /usr/include/stdio.h e stampa a video il numero dei caratteri letti dal file
+cat /usr/include/stdio.h | wc -m
+
+24. Capire cosa fa il comando wc -c /usr/include/stdio.h
+stampa il numero di byte e il percorso del file
+
+25. Scaricare il file di testo
+http://www.cs.unibo.it/~ghini/didattica/sistemioperativi/ESERCIZI/miofileNoNL.txt
+che ha anche delle righe vuote e che termina con una riga che non ha il
+carattere di andata a capo. Scrivere poi uno script leggitutto.sh che legga riga
+per riga quel file e stampi a video ciascuna riga letta, compresa l'ultima.
+exec {VAR}< ~/Desktop/miofileNoNL.txt
+while read -u ${VAR} RIGA ; [[ $? -eq 0 ]] || [[ -n ${RIGA} ]] ; do echo ${RIGA} ; done
+exec {VAR}>&-
