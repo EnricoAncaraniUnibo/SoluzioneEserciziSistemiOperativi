@@ -1,0 +1,20 @@
+26) Invocare il comando echo in modo da fargli scrivere nello stderr la parola CIAO.
+Verificare che la parola NON vada sullo stdout.
+echo CIAO 1>&2
+
+27) Scrivere il file di testo asterischi.txt che contiene le seguenti linee di testo, ciascuna
+formata da 4 parole. Il file verrà usato come standard input per lo script star.sh
+uno due tre quattro
+alfa beta * gamma
+one two three four
+Scrivere poi lo script star.sh che deve leggere una per una le righe provenienti
+dallo standard input e stampare a video, per ciascuna riga, la quarta e la terza
+parola della riga, in quest'ordine, separate da spazi.
+L'output dovrà essere :
+quattro tre
+gamma *
+four three
+Lanciare lo script star.sh passandogli nello standard input il contenuto del file
+asterischi.txt. Verificare che l'output sia corretto.
+while read A B C D ; [[ $? -eq 0 ]] || [[ -n ${A} ]] ; do echo "${D} ${C}" ; done
+PER FARLO PARTIRE source star.sh < asterischi.txt
