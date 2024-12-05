@@ -1,0 +1,19 @@
+Realizzare uno script nAnB.sh che prende come argomento una stringa di testo e verifica che la stringa sia
+formata esattamente da N caratteri A seguiti da N caratteri B, con un N qualunque maggiore di zero.
+Se la stringa corrisponde ai requisiti lo script scrive sullo standard output la parola "vero" seguita dal Numero
+N individuato.
+Altrimenti scrive "falso".
+Ad esempio, passando come argomento:
+AAABBB vedo in output "vero N=3"
+ADABBB vedo in output "falso" perché c'è carattere diverso da A e da B
+AAB vedo in output "falso"
+AabB vedo in output "falso"
+
+NB=0
+NA=0
+INDICE=0
+FINITO=0
+read RIGA
+CAT=${RIGA:${INDICE}:1}
+while [[ -n ${CAT} && ${FINITO} -eq 0 ]] ; do if [[ ${CAT} == "A" ]] ; then ((NA=${NA}+1)) ; ((INDICE=${INDICE}+1)) ; CAT=${RIGA:${INDICE}:1} ; else if [[ ${CAT} == "B" ]] ; then ((NB=${NB}+1)) ; ((INDICE=${INDICE}+1)) ; CAT=${RIGA:${INDICE}:1} ; else FINITO=1 ; fi ; fi ; done
+if [[ ${FINITO} -eq 0 ]] ; then if [[ ${NA} -eq ${NB} ]] ; then echo "vero ${NA}" ; else echo falso ; fi ; else echo falso ; fi  
