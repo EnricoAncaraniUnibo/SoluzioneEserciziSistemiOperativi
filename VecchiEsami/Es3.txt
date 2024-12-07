@@ -1,0 +1,25 @@
+Realizzare uno script bash contaseparatamente.sh che effettua le seguenti operazioni:
+Lo script prende un numero variabile di argomenti, al massimo 9.
+Ciascun argomento è il nome di un file.
+Lo script scrive sullo standard output il numero totale di righe dei file passati come argomenti di
+indice pari.
+Lo script scrive sullo standard error il numero totale di righe dei file passati come argomenti di
+indice dispari.
+Realizzare poi uno script bash lancia.sh che:
+lancia l'esecuzione dello script contaseparatamente.sh passando allo script come argomenti i
+primi 7 file che si ottengono come standard output del comando ls -S1 /usr/include/*.h
+Il modo in cui lo script lancia.sh lancia l'esecuzione di contaseparatamente.sh deve ridirezionare
+sia lo standard output che lo standard error di contaseparatamente.sh sullo standard error di
+lancia.sh stesso.
+Mi raccomando, verificare che lo script lancia.sh produca il suo output sullo standard error.
+
+contaseparatamente.sh
+ND=0
+NP=0
+if [[ $# -lt 10 ]] ; then for ((I=1;$I<=$#;I=$I+2)) ; do while read RIGA ; do ((ND=${ND}+1)) ; done<${!I} ; done ; for ((I=2;$I<=$#;I=$I+2)) ; do while read RIGA ; do ((NP=${NP}+1)) ; done<${!I} ; done ; fi
+echo ${NP}>&1
+echo ${ND}>&2
+
+lancia.sh
+VAR=`ls -S1 /usr/include/*.h | head -n 7`
+source contaseparatamente.sh ${VAR} 1>&2
