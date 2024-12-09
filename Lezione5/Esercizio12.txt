@@ -1,0 +1,20 @@
+28) Scrivere un file di testo di almeno 5 righe, ciascuna contenente almeno 7 parole
+separate da spazi e da tabulazioni. Mettete in qualche parola anche un asterisco *.
+Poi utilizzare il comando cut per visualizzare a video, di ciascuna riga, solo i caratteri
+dal terzo al quinto e dal decimo al quindicesimo, compresi gli estremi.
+cut -b 3-5,10-15 testo.txt
+
+29) Aggiungere al comando precedente, in pipe, tanti comandi (suggerimento: sed) per
+eliminare dall'output finale tutti gli spazi bianchi, tutte le tabulazioni, tutti gli
+asterischi. Vi ricordo di quotare con gli ' l'argomento passato a sed, per
+impedire che la bash ne interpreti il contenuto.
+cut -b 3-5,10-15 testo.txt | sed 's/*//g' | sed 's/\t//g' | sed 's/ //g'
+
+30) Aggiungere in pipe il comando word count (wc) e fargli contare il totale dei
+caratteri contenuti nelle righe visualizzate sullo standard output.
+cut -b 3-5,10-15 testo.txt | sed 's/*//g' | sed 's/\t//g' | sed 's/ //g' | wc -m
+
+36) Scrivere uno script unasiunano.sh che prende delle righe di testo dallo standard
+input e visualizza le righe una si ed una no
+VAR=0
+while read RIGA ; do if [[ VAR -eq 0 ]] ; then VAR=1 ; echo ${RIGA} ; else VAR=0 ; fi ; done
