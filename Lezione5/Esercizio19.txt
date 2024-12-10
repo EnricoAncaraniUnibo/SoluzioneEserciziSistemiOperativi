@@ -1,0 +1,23 @@
+51.Scrivere uno script puntini.sh che prende come argomento a riga di comando un
+intero positivo che rappresenta un certo numero di secondi. Lo script deve rimanere
+in esecuzione per quel numero di secondi e, ad ogni secondo, stampare a video un
+punto . seguito dal proprio PID. Ma senza andare a capo.
+NUM=0
+while [[ ${NUM} -lt $1 ]] ; do sleep 1 ; ((NUM=${NUM}+1)) ; echo -n ".$$" ; done
+
+52.Eseguire lo script precedente passandogli un argomento intero >= 30. Poi digitare
+alcuni comandi per sospendere lo script e mandarlo in background, poi riportarlo in
+foreground e poi dopo una decina di secondi sospenderlo e riportarlo in
+background. Infine killare lo script usando il suo pid (process identifier).
+./puntini.sh 50
+CTRL + Z
+bg
+fg
+CTRL + Z
+bg
+kill -9 $!
+
+53.Eseguire lo script in modo da mandarlo direttamente in background subito, senza
+sospenderlo. Poi killare lo script.
+./puntini.sh 50 &
+kill -9 $!
