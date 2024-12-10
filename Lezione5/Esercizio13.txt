@@ -15,4 +15,8 @@ lunghezza del nome della directory e lo accumula in una variabile locale
 LungNomiDirectory. Lo script, inoltre conta i file che non sono delle directory. Al
 termine lo script visualizza in output il numero di file di tipo non directory e la
 lunghezza accumulata dei nomi delle directory lette.
-
+NUM=0
+LungNomiDirectory=0
+for VAR in `ls` ; do if [[ -d ${VAR} ]] ; then ((LungNomiDirectory=${LungNomiDirectory}+${#VAR})) ; else ((NUM=${NUM}+1)) ; fi ; done
+echo "${NUM}"
+echo "${LungNomiDirectory}"
