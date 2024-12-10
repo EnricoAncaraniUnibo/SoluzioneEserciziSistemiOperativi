@@ -1,0 +1,29 @@
+45) scrivere una riga di comando che mette sullo standard output le righe che stanno
+tra la 3° e la 5° posizione nel file /usr/include/stdio.h
+head -n 5 /usr/include/stdio.h | tail -n 3
+
+46) scrivere una riga di comando che mette sullo standard output delle righe con i primi
+3 caratteri delle ultime 4 righe del file /usr/include/stdio.h
+tail -n 4 /usr/include/stdio.h | cut -b -3
+
+47) scrivere una riga di comando che legge due righe da standard input e le mette in
+output in ordine invertito.
+read RIGA1 ; read RIGA2 ; echo ${RIGA2} ; echo ${RIGA1}
+
+48) scrivere una riga di comando che legge una riga da standard input e mette in
+output niente
+read riga &> /dev/null
+
+49) scrivere una riga di comando che legge righe da standard input e per ciascuna di
+queste mette in output il numero di caratteri che la compongono.
+while read RIGA ; do echo ${#RIGA} ; done
+
+50) usare in sequenza le precedenti prime 2 righe di comando per generare output da
+passare come standard input all'insieme delle precedenti righe di comando (quelli dal
+terzo al quinto in quest'ordine), eseguiti in sequenza.
+head -n 5 /usr/include/stdio.h | tail -n 3 | (read RIGA1 ; read RIGA2 ; echo ${RIGA2} ; echo ${RIGA1}) 
+tail -n 4 /usr/include/stdio.h | cut -b -3 | (read RIGA1 ; read RIGA2 ; echo ${RIGA2} ; echo ${RIGA1}) 
+head -n 5 /usr/include/stdio.h | tail -n 3 | read riga &> /dev/null 
+tail -n 4 /usr/include/stdio.h | cut -b -3 | read riga &> /dev/null 
+head -n 5 /usr/include/stdio.h | tail -n 3 | while read RIGA ; do echo ${#RIGA} ; done
+tail -n 4 /usr/include/stdio.h | cut -b -3 | while read RIGA ; do echo ${#RIGA} ; done
