@@ -1,0 +1,9 @@
+43) Usando wget scaricare lo script bash al seguente URL:
+http://www.cs.unibo.it/~ghini/didattica/sistemioperativi/ESERCIZI/esprcond_errato.sh
+wget http://www.cs.unibo.it/~ghini/didattica/sistemioperativi/ESERCIZI/esprcond_errato.sh
+
+44)Verificare se lo script precedentemente scaricato esprcond_errato.sh funziona
+correttamente oppure produce errori. Correggere gli eventuali errori.
+si ha errore perché 
+if[[-e /usr/include/stdio.h]];then echo esiste;fi questo è lo script che non va
+if [[ -e /usr/include/stdio.h ]] ; then echo esiste ; fi così va
