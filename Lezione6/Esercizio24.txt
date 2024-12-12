@@ -1,0 +1,18 @@
+Esercizio666: cercare e risolvere errori nel seguente file stringa.c
+Il programma deve creare una stringa, modificarne il secondo carattere e poi stampare
+a video la stringa.
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+char *str="9876543210";
+int main(void) {
+str[1]='f';
+printf("str= %s \n", str ); /* stampa 9f76543210 ? */
+fflush(stdout);
+return(0);
+}
+Compilare e linkare il codice usando i seguenti comandi:
+gcc -c -ansi -Wpedantic -Wall stringa.c
+gcc -o stringa.exe stringa.o
+
+LA SOLUZIONE è char str[]="9876543210";

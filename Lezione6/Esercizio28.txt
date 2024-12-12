@@ -1,0 +1,33 @@
+I due file RisultatiProvaPratica1.txt e RisultatiProvaPratica2.txt contengono in
+ciascuna riga di testo il Nome, il Cognome, la Matricola e il Voto ottenuti dallo
+studente nellla prova pratica N° 1 e N° 2 rispettivamente. Ciascun Nome e ciascun
+Cognome è composto da una sola parola. Il numero di matricola è univoco. Il
+Cognome e il nome, invece, potrebbero essere ripetuti. Il voto può essere non
+sufficiente ( voto < 18).
+Scrivere uno script bash insuff2.sh che metta in output l'elenco dei soli studenti che
+rispettano TUTTE le seguenti caratteristiche:
+--- Hanno sostenuto la seconda prova prativa, ottenendo un voto NON sufficiente,
+--- Non hanno sostenuto la prima prova pratica.
+L'output deve essere formattato su più righe di testo. Ciascuna riga contiene le
+informazioni su uno studente, in particolare la Matricola, il Nome, il Cognome ed il
+voto ottenuto nella seconda prova pratica, in quest'ordine. Le righe dell'output
+devono essere ordinate secondo il Cognome, in senso crescente.
+Esempio di file:
+RisultatiProvaPratica1.txt  
+Avio Verdi 876754 21
+Dee Bord 666666 20
+Rino Ceronte 222222 13
+Caio Baro 777777 27
+RisultatiProvaPratica2.txt
+Carmine Ati 8888 23
+Paolo Venzi 333333 9
+Dee Bord 666666 12
+Sante Bo 888888 14
+OUTPUT
+888888 Sante Bo 14
+333333 Paolo Venzi 9
+
+STAMPABILE=0
+echo -n "" > risultato.txt
+while read NOME COGNOME MATRICOLA VOTO ; do if [[ ${VOTO} -lt 18 ]] ; then STAMPABILE=0 ; while read NOME2 COGNOME2 MATRICOLA2 VOTO2 ; do if [[ ${MATRICOLA} -eq ${MATRICOLA2} ]] ; then STAMPABILE=1 ; fi ; done<RisultatiProvaPratica1.txt ; if [[ ${STAMPABILE} -eq 0 ]] ; then echo "${MATRICOLA} ${NOME} ${COGNOME} ${VOTO}">>risultato.txt ; fi ; fi ; done<RisultatiProvaPratica2.txt
+sort -k 3 risultato.txt
